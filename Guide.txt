@@ -1,0 +1,13 @@
+
+---------------------------Basics -----------------------------------
+JDK -- is the software development kit for Java, 
+which includes the Java Runtime Environment (JRE), 
+an interpreter/loader (Java), a compiler (javac), 
+an archiver (jar), a documentation generator (Javadoc), 
+and other tools needed for Java development.
+
+--> java program execution starts from main function now the main function
+can not exist individually ,a class contains it.
+
+--> java has packages to organize their code files inside one package more 
+files can reside.
