@@ -5,7 +5,7 @@ public class Fundamental {
 
     public static void main(String[] args){
 
-        // Taking input from command
+        //--------------------------------------Taking input from command----------------------------------------------------------
         Scanner scanner = new Scanner(System.in);// create Scanner obj
         System.err.println("enter your name : ");
         String name2 = scanner.nextLine();
@@ -23,18 +23,18 @@ public class Fundamental {
          * nextShort() -> to read short
          */
 
-        // Variable and Data types--------------------------------------
+        //------------------------------------------------------ Variable and Data types--------------------------------------
         int age = 19;
         double salary = 45000.0;
         String name = "Priyabrata";
         boolean isStudent = true;
         System.out.println("my age is " + age + " !");
 
-        // Conditional statement-----------------------------------------
+        // ----------------------------------------------------------Conditional statement-----------------------------------------
         if( age >= 18 ) System.out.println("eligible for vote ");
         else System.out.println("not eligible !");
 
-        // Loop statement------------------------------------------------
+        // ----------------------------------------------------------Loop statement------------------------------------------------
         for(int i=1;i<=5;i++){
             System.out.println("I have " + i + " gfs !");
         }

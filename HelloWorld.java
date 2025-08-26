@@ -1,6 +1,6 @@
 
 // package xyz ( it says which package it belongs to)
-// in java the default access specifier is public 
+// in java the default access specifier is default 
 
 
 public class HelloWorld {

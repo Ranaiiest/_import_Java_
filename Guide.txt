@@ -11,3 +11,9 @@ can not exist individually ,a class contains it.
 
 --> java has packages to organize their code files inside one package more 
 files can reside.
+
+--> to compile java program we use javac command
+    javac package_name/file_name.java
+
+--> to run the compiled java program we use java command
+    java package_name.file_name or java package_name/file_name.java
