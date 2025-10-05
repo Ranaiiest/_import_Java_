@@ -166,39 +166,40 @@ public class file1 {
     //---------------------------------------------------------------------Inner-class--------------------------------------------------------------
     // inner class is a class which is a mem
     // 1. non-static inner class ( instance inner class)
-    class Outer{
-        int x = 10;
-        class Inner{
-            void f(){
-                System.out.println("inner class");
-            }
-            void show(){
-                System.out.println("value of x is : "+x);
-            }
-        }
-    // 2. static inner class ( static nested class)
-        static class Static_Inner{
-            void f(){
-                System.out.println("static inner class");
-            }
-        }
-        void g(){
-            Inner obj = new Inner();
 
-            obj.f();
+//------------------- Top-level Outer class -------------------
+class Outer{
+    int x = 10;
+    class Inner{
+        void f(){
+            System.out.println("inner class");
+        }
+        void show(){
+            System.out.println("value of x is : "+x);
         }
     }
-    
-    class Test{
-        void g(){
-            Outer obj = new Outer();
-            Outer.Inner in = obj.new Inner(); // syntax to create object of non-static inner class
-            in.f();
-            in.show();
-            Outer.Static_Inner si = new Outer.Static_Inner(); // syntax to create object of static inner class
-            si.f();
+    void g(){
+        Inner obj = new Inner();
+        obj.f();
+    }
+    // 2. static inner class ( static nested class)
+    public static class Static_Inner{
+        void f(){
+            System.out.println("static inner class");
         }
     }
+}
+
+class Test{
+    void g(){
+        Outer obj = new Outer();
+        Outer.Inner in = obj.new Inner(); // syntax to create object of non-static inner class
+        in.f();
+        in.show();
+        Outer.Static_Inner si = new Outer.Static_Inner(); // syntax to create object of static inner class
+        si.f();
+    }
+}
 
 
     //---------------------------------------------------------- Java Interface ----------------------------------------------------------

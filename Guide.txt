@@ -6,6 +6,14 @@ an interpreter/loader (Java), a compiler (javac),
 an archiver (jar), a documentation generator (Javadoc), 
 and other tools needed for Java development.
 
+() Execution flow of java
+1. java source code is first converted to a intermediate language i.e file_name.class
+2. then the java program i.e jvm in the os ( either mac or windows or linux ) concurrently
+    compile the intermediate code and execute it on the respective os.
+3. it is a cross platform language but it is slower.
+if we install jdk ( java dev kit ) then all the neccessary tools i.e the javac compiler then
+jvm executer all will be installed.
+
 --> java program execution starts from main function now the main function
 can not exist individually ,a class contains it.
 

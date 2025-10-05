@@ -7,13 +7,13 @@ public class Fundamental {
 
         //--------------------------------------Taking input from command----------------------------------------------------------
         Scanner scanner = new Scanner(System.in);// create Scanner obj
-        System.err.println("enter your name : ");
+        System.out.println("enter your name : ");
         String name2 = scanner.nextLine();
-        System.err.println("the name2 is = "+name2);
+        System.out.println("the name2 is = "+name2);
 
-        System.err.println("enter your age : ");
+        System.out.println("enter your age : ");
         int age2 = scanner.nextInt();
-        System.err.println("the age2 is = "+age2);
+        System.out.println("the age2 is = "+age2);
         /*
          * nextLine() -> reads a String value from the user
          * nextInt() -> reads int value from the user
