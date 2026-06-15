@@ -7,31 +7,49 @@ public class learn_HashMap {
         // creating a HashMap
         HashMap<Integer, String> map = new HashMap<Integer, String>();
 
+        // major imp methods : put(), get(), containsKey(), remove(), keySet(), entrySet(), getKey(), getValue() etc.
+
         // inserting ele
         map.put(1, "One"); // t.c = O(1) on average
         map.put(2, "Two");
         map.put(3, "Three");
         System.out.println(map);
+        int sz = map.size(); 
+        boolean isEmpty = map.isEmpty();
+
 
         // accessing ele
         String value = map.get(2); // t.c = O(1) on average
         System.out.println("Value at key 2: " + value);
+        String four = map.getOrDefault(4, "Four"); // t.c = O(1) on average, it will return the value at
+        // key 4 if it exists otherwise it will return "Four"
+
+
 
         // removing ele : map.remove(key)
         map.remove(3); // t.c = O(1) on average and in worst case O(n)  
         System.out.println(map);
 
+
+
         // checking if a key exists
         boolean hasKey = map.containsKey(1); // t.c = O(1) on average and in worst case O(n)
         System.out.println("Map contains key 1: " + hasKey);
+
+
 
         // checking if a value exists
         boolean hasValue = map.containsValue("Two"); // t.c = O(n)
         System.out.println("Map contains value 'Two': " + hasValue);
 
+
+
         // getting the size of the map
         int size = map.size(); // t.c = O(1)
         System.out.println("Size of the map: " + size);
+
+
+        
 
         // traversing a HashMap
         for (Map.Entry<Integer, String> entry : map.entrySet()) { // t.c = O(n)

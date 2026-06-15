@@ -4,18 +4,21 @@ import java.util.Arrays;
 // Resources used : 
 // 1. https://www.geeksforgeeks.org/java-oops-concepts/
 // 2. https://www.tpointtech.com/java-tutorial
-// 4. https://www.w3schools.com/java/java_oop.asp
+// 3. https://www.w3schools.com/java/java_oop.asp
 
-// -----------------------------------------Rules in Java class ------------------------------------------------------
-// 1. there is only one public class allowed in java and that class will have same name as the file
+// ----------------------------------------- Rules in Java classes ------------------------------------------------------
+// 1. A Java source file can contain only one top-level public class, and that public class must have the same name as the file.
 
 
 
 
 //-------------------------------------------------Object & class----------------------------------------------------
-// class -> it is a custom data type consist of collection of methods and attributes to construct custom objects.
-// object -> it is an instance of the class 
-// class variables are also called instance variables 
+// class -> a class is a custom data type that groups methods and attributes used to create objects.
+// object -> an object is an instance of a class.
+// class variables are static variables, while instance variables belong to specific objects.
+
+// In Java, a top-level class cannot be declared private, but a nested class member can be private.
+// A private nested class is accessible only within its enclosing class and not from outside it.
 // private class pvt{
 //     public pvt(){
 
@@ -35,7 +38,7 @@ public class file1 {
         System.out.println("Hi");
     }
 
-    public static class Student{ // this is a nested or inner member class of file1
+    public static class Student{ // this is a static nested class of file1
 
         //---------------------------------------------- member variables -------------------------------------------------------------------
         double marks;
@@ -50,7 +53,7 @@ public class file1 {
         }
 
         //-----------------------------------------------Constructor--------------------------------------------------------
-        // eligible access modifier for constructor are = public, private and protected
+        // eligible access modifiers for constructors are public, private, protected, and package-private (default).
         public Student(){ // default constructor
             marks = 0;
             name = "";
@@ -63,7 +66,7 @@ public class file1 {
             this.marks = marks;
         }
 
-        public Student(Student another_student ){
+        public Student(Student another_student ){ // copy constructor
             this.marks = another_student.marks;
             this.name = another_student.name;
             this.rno = another_student.rno;
@@ -79,22 +82,22 @@ public class file1 {
     // protected
     // default
 
-    // for top level class only default and public is allowed
-    // for inner class ( which is present as a member in another class ) 
+    // Top-level classes can be public or package-private (default access).
+    // Inner classes are nested class members inside another class.
 
-    // non access modifiers for class : final (const in cpp), abstract (can only be implemented via subclasses )
-    // non access modifiers for members : final, abstract (only for methods who does not have body overriden via subclass), static
+    // non-access modifiers for classes: final (prevents subclassing), abstract (cannot be instantiated and is extended by subclasses)
+    // non-access modifiers for members: final, abstract (abstract methods have no body and must be overridden by subclasses), static
 
-    // we can use final to not allow inheritance for a class or declare the class access modifiers as private 
+    // final prevents a class from being subclassed; private is an access modifier, not a substitute for final.
 
 
     //------------------------------------------------- Inheritance ----------------------------------------------------
     // guide : https://www.geeksforgeeks.org/inheritance-in-java/
-    // java visibility rule for inheritance
-    // 1. private members are not inherited
-    // 2. while inheriting members from parent then visibility can not be decreased if decreased then it will give compile time error
-    // 3. to allow inheritance for a class the class should be either public or default ( if both parent and child class are in same package)
-    // 4. to access super class member from a class in different package the super class member should be public or protected and the super class should be public
+    // Java visibility rules for inheritance
+    // 1. private members are inherited but are not accessible in subclasses.
+    // 2. An overriding method in a subclass cannot use more restrictive access than the overridden method.
+    // 3. A top-level class can be inherited if it is public or package-private and the subclass is in the same package.
+    // 4. To extend a superclass from a different package, the superclass must be public and its accessible members should be public or protected.
 
     // types of inheritance in java : 
     // 1. single inheritance
@@ -133,7 +136,8 @@ public class file1 {
     // code 
     class A{
         int x;
-        public A(int x){
+        public A(int x){ // if we do not write constructor in parent class then compiler will add default constructor which will call super() but 
+            // if child class constructor does not call parent class constructor explicitly then compiler will add super() in child class constructor
             this.x = x;
         }
 
@@ -163,9 +167,9 @@ public class file1 {
     }
 
 
-    //---------------------------------------------------------------------Inner-class--------------------------------------------------------------
-    // inner class is a class which is a mem
-    // 1. non-static inner class ( instance inner class)
+    //--------------------------------------------------------------------- Inner class --------------------------------------------------------------
+    // Inner classes are nested classes defined within another class.
+    // 1. non-static inner class (instance inner class)
 
 //------------------- Top-level Outer class -------------------
 class Outer{
@@ -206,12 +210,12 @@ class Test{
     // defn : interface is a abstract type which is used to specify a behavior(abstract method) that classes must implement
     // imp points :
     // 1. interface can have abstract methods ( only method signature no body) and default methods ( method with body)
-    // 2. it can not be instantiated ( we can not create object of interface)
+    // 2. it cannot be instantiated (we cannot create an object of an interface)
     // 3. a class can implement multiple interfaces ( multiple inheritance is allowed via interfaces)
     // 4. interface can extend multiple interfaces ( hybrid inheritance )
     // 5. interface and abstract class are similar but interface is more abstract than abstract class both are used to achieve abstraction
-    // 6. all methods in interface are by default abstract and public
-    // 7. all variables in interface are by default public, static and final ( constants)
+    // 6. Abstract interface methods are public by default; interfaces may also declare default, static, and private methods with bodies.
+    // 7. All variables in an interface are public, static, and final by default (constants).
     // 8. to implement an interface we use implements keyword
     // 9. a class can implement multiple interfaces but can extend only one class ( abstract or normal)
     // 10. if a class implements an interface then it must override all the abstract methods of the interface or else it will give compile time error
@@ -236,7 +240,7 @@ class Test{
         // void m(); // public abstract by default
         // {
         //     // body
-        // } // it will give error : interface method can not have body
+        // } // this is invalid because an ordinary interface method cannot have a body unless it is default, static, or private
     }
     class Dog implements Animal{
         public void sound(){ // must override abstract method
@@ -248,10 +252,10 @@ class Test{
     }
 
     // the difference between abstract class and interface
-    // 1. abstract class can have instance variables but interface can not have instance variables
-    // 2. abstract class can have constructor but interface can not have constructor
-    // 3. abstract class can have concrete methods but interface can not have concrete methods ( only default and static methods)
-    // 4. a class can extend only one abstract class but an interface can implement multiple interfaces
+    // 1. abstract classes can have instance variables but interfaces cannot have instance variables other than constants
+    // 2. abstract classes can have constructors but interfaces cannot have constructors
+    // 3. abstract classes can have concrete methods, while interfaces can have default, static, and private methods with bodies.
+    // 4. a class can extend only one abstract class but can implement multiple interfaces.
     
     // example
     abstract class A1{
@@ -272,14 +276,14 @@ class Test{
 
     //---------------------------------------------------------- Abstract class ----------------------------------------------------------
     // defn : abstract class is a class which is declared with abstract keyword and it can have abstract methods 
-    // ( only method signature no body) and concrete methods ( method with body) and like interface it can not be instantiated 
-    // ( we can not create object of abstract class)
+// (only method signature, no body) and concrete methods (method with body); like an interface, it cannot be instantiated
+// (we cannot create an object of an abstract class)
 
     // imp points :
-    // 1. it can have abstract methods ( only method signature no body) and concrete methods ( method with body)
-    // 2. it can not be instantiated ( we can not create object of abstract class)
-    // 3. a class can extend only one abstract class ( no multiple inheritance via classes)
-    // 4. abstract class can extend another abstract class or normal class
+    // 1. it can have abstract methods (only method signature, no body) and concrete methods (method with body)
+    // 2. it cannot be instantiated (we cannot create an object of an abstract class)
+    // 3. a class can extend only one abstract class (no multiple inheritance via classes)
+    // 4. abstract classes can extend another abstract class or a normal class
     // 5. if a class extends an abstract class then it must override all the abstract methods of the abstract class or else it will give compile time error
     // 6. if a class extends an abstract class and does not override all the abstract methods of the abstract class then that class must be declared as abstract
     // 7. abstract class can have instance variables
@@ -318,14 +322,14 @@ class Test{
         }
     }
 
-    //---------------------------------------------------------- Instace variables vs Class variables ----------------------------------------------------------
-    // instance variables are non-static variables and class variables are static variables
-    // every object has its own copy of instance variables but all objects share the same copy of class variables
-    // instance variables stored in heap memory but class variables stored in stack memory
-    // instance variables are initialized when object is created but class variables are initialized when class is loaded
+    //---------------------------------------------------------- Instance variables vs Class variables ----------------------------------------------------------
+    // instance variables are non-static variables and class variables are static variables.
+    // every object has its own copy of instance variables, while all objects share the same copy of class variables.
+    // both instance and static variables are part of the class data area; static variables are associated with the class rather than individual objects.
+    // instance variables are initialized when an object is created, while class variables are initialized when the class is loaded.
 
     //------------------------------------------------------------   Polymorphism    ----------------------------------------------------------
-    // defn : polymorphism is the ability of an methods (can not applied to class or instance varialbles ) to take on many forms
+    // defn : polymorphism is the ability of methods to take many forms.
     // types of polymorphism in java :
     // 1. compile time polymorphism ( static polymorphism or method overloading)
     class Math{
@@ -386,7 +390,7 @@ class Test{
         // setter method for age
         public void setAge(int age){
             if(age<0){
-                System.out.println("Age can not be negative");
+                System.out.println("Age cannot be negative");
             }else{
                 this.age = age;
             }

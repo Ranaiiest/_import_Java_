@@ -23,11 +23,19 @@ public class learn_arraylist{
         popularity.add(7);
         popularity.add(10);
 
+        int sz = popularity.size();
+        boolean isEmpty = popularity.isEmpty(); 
+
+
+
+
         // create a arraylist with specified size to use it as frequency array
         ArrayList<Integer> freq = new ArrayList<Integer>(Collections.nCopies(100, 0));
         // Collections.nCopies(size, initial_value) -> it will create a list of given size with all ele as initial_value
         // t.c = O(n)
         freq.set(9, freq.get(9) + 1); // incrementing the frequency of 9
+
+
 
         // arr.add(index, val) -> to add at a particular index  t.c = O(n)
         // arr.addAll(another_arr) -> it will append the another_arr to the end of arr t.c = O(n)
@@ -36,11 +44,15 @@ public class learn_arraylist{
         popularity.addAll(more_popularity);
         System.out.println(prog_lang);
 
+
+
         // accessing ele
         String first_lang = prog_lang.get(0);
         System.out.println("First prog lang: " + first_lang);
         // arr.set(index, val) -> to update the value at a particular index t.c = O(1)
         prog_lang.set(0, "javascript");
+
+        
         
 
         // removing ele
@@ -49,9 +61,12 @@ public class learn_arraylist{
         popularity.remove(Integer.valueOf(10)); // remove by value t.c = O(n)
         // arr.clear() -> to remove all ele t.c = O(n)
 
+        // add, get, set, remove 
         System.out.println(prog_lang.contains("C#")); // to check if an ele is present or not t.c = O(n)
         System.out.println(prog_lang.size()); // to get the size of the arraylist t.c = O(1)
         System.out.println(prog_lang.isEmpty()); // to check if the arraylist is empty or not t.c = O(1)
+
+
 
 
         // Traversing an arraylist
@@ -65,12 +80,12 @@ public class learn_arraylist{
             System.out.print(lang + " ");
         }
         System.out.println();
-        // 3. using iterator
-        Iterator<String> it = prog_lang.iterator();
-        while(it.hasNext()){
-            System.out.print(it.next() + " ");
-        }
-        System.out.println();
+
+
+        // collections useful methods
+        Collections.sort(prog_lang); // to sort the arraylist t.c = O(nlogn)
+        Collections.reverse(prog_lang); // to reverse the arraylist t.c = O(n)
+        
 
     }
 }
